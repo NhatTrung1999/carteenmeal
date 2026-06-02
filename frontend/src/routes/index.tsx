@@ -1,11 +1,11 @@
 import MainLayout from '@/layouts/MainLayout';
-import { createBrowserRouter } from 'react-router';
+import { createBrowserRouter, Outlet } from 'react-router';
 
 export const router = createBrowserRouter([
   //   { path: '/', Component: () => <h1>Home</h1> },
   {
     path: '/',
-    Component: () => <MainLayout />,
+    Component: () => <MainLayout children={<Outlet />} />,
     children: [
       { path: '/', Component: () => <h1>Main Home</h1> },
       { path: '/test', Component: () => <h1>Test</h1> },
