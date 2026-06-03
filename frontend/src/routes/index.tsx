@@ -1,17 +1,20 @@
 import MainLayout from '@/layouts/MainLayout';
-import { createBrowserRouter, Outlet } from 'react-router';
+import HomePage from '@/pages/HomePage';
+import LoginPage from '@/pages/LoginPage';
+import LogPage from '@/pages/LogPage';
+import PermissionPage from '@/pages/PermissionPage';
+import { createBrowserRouter, Navigate } from 'react-router';
 
 export const router = createBrowserRouter([
-  //   { path: '/', Component: () => <h1>Home</h1> },
   {
     path: '/',
-    Component: () => <MainLayout children={<Outlet />} />,
+    Component: MainLayout,
     children: [
-      { path: '/', Component: () => <h1>Main Home</h1> },
-      { path: '/test', Component: () => <h1>Test</h1> },
+      { index: true, Component: HomePage },
+      { path: 'permission', Component: PermissionPage },
+      { path: 'logger', Component: LogPage },
     ],
   },
-  { path: '/login', Component: () => <h1>Login</h1> },
-  { path: '/permission', Component: () => <h1>Permission</h1> },
-  { path: '/logger', Component: () => <h1>Logger</h1> },
+  { path: '/login', Component: LoginPage },
+  { path: '*', Component: () => <Navigate to="/" replace /> },
 ]);

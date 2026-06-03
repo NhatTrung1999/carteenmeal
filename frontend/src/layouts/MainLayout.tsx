@@ -1,14 +1,20 @@
-import { AppSidebar } from '@/components/app-sidebar';
-import { SidebarProvider, SidebarTrigger } from '@/components/ui/sidebar';
+import { Outlet } from 'react-router';
+import { SidebarInset, SidebarProvider } from '@/components/ui/sidebar';
+import AppHeader from '@/layouts/MainLayout/Header';
+import AppSidebar from '@/layouts/MainLayout/AppSidebar';
 
-export default function Layout({ children }: { children: React.ReactNode }) {
+const MainLayout = () => {
   return (
     <SidebarProvider>
       <AppSidebar />
-      <main>
-        <SidebarTrigger />
-        {children}
-      </main>
+      <SidebarInset>
+        <AppHeader />
+        <div className="flex flex-1 flex-col gap-6 p-4 md:p-6">
+          <Outlet />
+        </div>
+      </SidebarInset>
     </SidebarProvider>
   );
-}
+};
+
+export default MainLayout;

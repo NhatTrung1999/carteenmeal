@@ -1,8 +1,13 @@
 import { RouterProvider } from 'react-router';
 import { router } from './routes';
+import { TooltipProvider } from '@/components/ui/tooltip';
 
 const App = () => {
-  return <RouterProvider router={router} />;
+  return (
+    <TooltipProvider>
+      <RouterProvider router={router} />
+    </TooltipProvider>
+  );
 };
 
 export default App;
